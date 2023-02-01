@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('birth_date')->comment('col-4');
             $table->string('email')->unique()->comment('col-4');
             $table->string('password')->comment('col-4');
-            $table->boolean('is_admin')->default('false');
+            $table->boolean('is_admin')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
