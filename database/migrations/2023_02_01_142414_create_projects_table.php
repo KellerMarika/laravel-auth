@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('type')->comment('col-5');
             $table->string('level')->default('@die')->comment('col-4');
             $table->boolean('completed')->default(true)->comment('col-3');
-            $table->url('img')->comment('col-12');
+            $table->string('img')->comment('col-12');
             $table->text('description')->comment('col-12');
         });
     }
