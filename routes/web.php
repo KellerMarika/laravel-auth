@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/* pagina privata visibile solo se autenticato*/
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
