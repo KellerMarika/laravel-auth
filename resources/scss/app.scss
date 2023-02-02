@@ -1,1 +1,65 @@
-@import '~bootstrap/scss/bootstrap'
+@use "@fortawesome/fontawesome-free/css/all.min.css";
+
+//VARIABLES (bootstrap)
+$primary_color: #7e7e7e;
+$secondary_color: #ffffff8c;
+$success_color: rgb(154, 228, 120);
+$info_color: rgb(16, 196, 241);
+$warning_color: rgb(255, 193, 7);
+$danger_color: rgb(231, 168, 84);
+$light_color: rgb(248, 249, 250);
+$dark_color: rgb(49, 49, 49);
+
+@use "bootstrap/scss/bootstrap" with ($primary: $primary_color,
+ $secondary: $secondary_color,
+ $success: $success_color,
+ $info: $info_color,
+ $warning: $warning_color,
+ $danger: $danger_color,
+ $light: $light_color,
+ $dark: $dark_color,
+);
+
+
+
+
+/* NAVBAR */
+nav {
+ background: linear-gradient(0deg, rgb(49, 49, 49) 10%, rgba(37, 37, 37, 1) 100%);
+
+/*   & * {
+  border: 1px solid rgb(0, 255, 34);
+ }    */
+
+ .keller-logo {
+  transform: scale(120%);
+
+ }
+
+ .nav-item {
+  font-size: .75rem;
+  font-weight: 800;
+
+  & a {
+   text-decoration: none;
+   color: $primary_color;
+
+   &:hover,
+   &:active {
+    color: $secondary_color
+   }
+  }
+
+  .link-underline {
+   background-color: $primary_color;
+   height: 3px;
+   width: 0px;
+   transition: all .3s;
+  }
+
+  &:hover .link-underline {
+   background-color: $secondary_color;
+   width: calc(100% - 1rem);
+  }
+ }
+}

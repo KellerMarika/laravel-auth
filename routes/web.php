@@ -16,8 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/* home di partenza (ex welcome) disponibile a tutti */
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 /* pagina privata visibile solo se utente autenticato, per questo personalizzo percorso*/
@@ -26,8 +27,6 @@ Route::middleware(['auth', 'verified'])
 ->prefix('admin')
 ->name('admin.')->
 group(function () {
-
-
 
     Route::get('/', [DashboardController::class, 'home'])->name('dashboard');
 
