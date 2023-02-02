@@ -20,25 +20,21 @@ $dark_color: rgb(49, 49, 49);
  $dark: $dark_color,
 );
 
-
-
-
 /* NAVBAR */
 nav {
  background: linear-gradient(0deg, rgb(49, 49, 49) 10%, rgba(37, 37, 37, 1) 100%);
 
-/*   & * {
+/*  & * {
   border: 1px solid rgb(0, 255, 34);
- }    */
+ }     */
 
  .keller-logo {
   transform: scale(120%);
-
  }
 
  .nav-item {
   font-size: .75rem;
-  font-weight: 800;
+  width: fit-content;
 
   & a {
    text-decoration: none;
@@ -52,7 +48,7 @@ nav {
 
   .link-underline {
    background-color: $primary_color;
-   height: 3px;
+   height: 2px;
    width: 0px;
    transition: all .3s;
   }
