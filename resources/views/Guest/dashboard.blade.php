@@ -1,4 +1,6 @@
-{{-- @extends('layouts.app')
+{{-- guet --}}
+
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -13,14 +15,12 @@
                         {{ session('status') }}
                     </div>
                     @endif
-
-                    {{ __('You are logged in!') }}
+                    <h1>ADMIN DASHBOARD</h1>
+                    {{ __('You are logged in!')}}  
+                    <h5>{{ Auth::user()->name}}</h5>
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
- --}}
-
- {{-- copiata e incollata nella view admin e guest --}}
