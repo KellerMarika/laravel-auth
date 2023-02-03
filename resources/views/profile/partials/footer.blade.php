@@ -1,4 +1,16 @@
-<footer >
- <h3 class="text-light">magnifico footer</h3>
-{{-- <img src="{{ Vite::asset('resources/img/dev-bg.png') }}" alt=""> --}}
+<footer>
+    <div class="position relative">
+        {{-- ocen --}}
+        <div class="ocean">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+
+        <article class="footer-content">
+            <div class="container-fluid">
+                <h3 class="text-dark">magnifico footer</h3>
+
+            </div>
+            <article>
 </footer>
