@@ -13,12 +13,12 @@ class DashboardController extends Controller
   public function home()
   {
     $user = Auth::user();
-    if ($user->is_admin == true) {
+    if ($user->is_superadmin == true) {
       /* posso mostrare una view diversa */
       return view('admin.dashboard');
     } else {
       /* posso mostrare una view diversa */
-      return view('guest.dashboard');
+      return view('user.dashboard');
 
     }
     

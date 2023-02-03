@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm  p-0">
+<nav class="navbar navbar-expand-md navbar-secondary bg-secondary shadow-sm  p-0">
     <div class="container-fluid px-md-5 d-flex align-items-md-end">
         <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
 
@@ -6,7 +6,7 @@
                 {{-- Keller-logo --}}
                 <svg class="keller-logo" width="112" height="111" viewBox="0 0 1426 1419" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
-                    <ellipse cx="712.84" cy="709.469" rx="393.5" ry="368" fill="#7E7E7E" />
+                    <ellipse cx="712.84" cy="709.469" rx="393.5" ry="368" fill="" />
                     <path d="M964.462 946.311L834.962 769.311L896.462 709.311L1069.46 946.311H964.462Z" fill="#D9D9D9"
                         stroke="black" />
                     <path d="M637.84 818.469L589.84 942.469L395.34 565.469H504.84L637.84 818.469Z" fill="#D9D9D9"
