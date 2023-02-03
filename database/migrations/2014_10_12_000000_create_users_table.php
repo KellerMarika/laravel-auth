@@ -15,12 +15,19 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->comment('col-6');
-            $table->string('surname')->comment('col-6');
-            $table->date('birth_date')->comment('col-4');
-            $table->string('email')->unique()->comment('col-4');
-            $table->string('password')->comment('col-4');
+            $table->string('name');
+            $table->string('surname');
+            $table->date('birth_date');
+            $table->string('email')->unique();
+            $table->string('password');
             $table->boolean('is_superadmin')->default(false);
+
+
+            $table->string('profile_img')->nullable();
+            $table->string('cover_img')->nullable();
+            $table->string('primary_color')->nullable()->default('hsl(276, 36%, 40%)');
+            $table->string('secondary_color')->nullable()->default('rgb(233, 216, 231)');
+
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

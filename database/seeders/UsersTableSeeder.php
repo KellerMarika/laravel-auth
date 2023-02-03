@@ -20,10 +20,10 @@ class UsersTableSeeder extends Seeder
             $users = [
 
             [
-                'name' => 'Carolina',
-                'surname' => 'Durina',
-                'birth_date' => '10-10-1993',
-                'email' => "CarolinaDurina93@libero.com",
+                'name' => 'Marika',
+                'surname' => 'Keller',
+                'birth_date' => '02-11-1992',
+                'email' => "marikaKeller92@gmail.com",
                 'password' => '123stella',
             ],
         ];
@@ -36,7 +36,7 @@ class UsersTableSeeder extends Seeder
             $newUser->birth_date = Hash::make($user['birth_date']);
             $newUser->birth_date = Carbon::createFromDate($user['birth_date'])->toDateTimeString();
 
-            $newUser->is_admin = 1;
+            $newUser->is_superadmin = 1;
 
             $newUser->save();
         }
