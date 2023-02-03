@@ -22,7 +22,11 @@ class User extends Authenticatable
         'surname',
         'birth_date',
         'email',
-        'password', 
+        'password',
+        'profile_img',
+        'cover_img',
+        'primary_color',
+        'secondary_color',
     ];
 
     /**

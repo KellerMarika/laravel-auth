@@ -16,12 +16,15 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('title', 80)->comment('col-12');
-            $table->string('type')->comment('col-5');
-            $table->string('level')->default('@die')->comment('col-4');
-            $table->boolean('completed')->default(true)->comment('col-3');
-            $table->string('img')->comment('col-12');
-            $table->text('description')->comment('col-12');
+            
+            $table->string('title', 80);
+            $table->string('category',50);
+            $table->string('languages');
+            $table->string('level')->default('@die');
+            $table->boolean('completed')->default(true);
+            $table->text('description');
+            $table->string('github_link');
+            $table->string('cover_img')->nullable();
         });
     }
 
