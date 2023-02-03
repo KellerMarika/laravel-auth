@@ -64,11 +64,14 @@
 
             {{-- checkbox --}}
 
+            
             <div class="input-container pb-2 col-12  col-sm-4 col-md-2 ps-3">
                 <div class="form-check form-switch p-0">
+
                     <label class="form-check-label" for="completed">completato</label>
 
                     <div class="form-check form-switch pt-2">
+                        <input type="hidden" name="completed" value="0" >
                         <input
                         class="form-check-input {{--  @error('type') is-invalid @elseif(old('type')) is-valid @enderror --}}"
                         value="1" type="checkbox" role="switch" id="completed" name="completed"
@@ -118,7 +121,7 @@
 
             {{-- opzioni --}}
             <div class="p-3">
-                <a href="{{ route('admin.projects.index')}}" class="btn btn-primary">Annulla</a>
+                <a href="{{ route('admin.projects.index') }}" class="btn btn-primary">Annulla</a>
 
                 <button class="btn btn-secondary">crea progetto</button>
 
