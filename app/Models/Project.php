@@ -14,7 +14,7 @@ class Project extends Model
         'languages',
         'level',
         'completed',
-        'img',
+        'cover_img',
         'description',
         'github_link',
     ];

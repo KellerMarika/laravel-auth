@@ -31,10 +31,12 @@ class StoreProjectRequest extends FormRequest
         return [
             /* validazione triste */
             'title' => 'required|max:80',
-            'type' => 'required|max:225',
+            'category' => 'required|max:225',
+            'languages' => 'required|max:225',
             'completed' => 'required|boolean',
-            'img' => 'string',
-            'description' => 'string'
+            'cover_img' => 'image|max:1024',
+            'description' => 'string',
+            'github_link'=>'string'
         ];
     }
 }
