@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreProjectRequest;
+use App\Http\Requests\Admin\UpdateProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ProjectController extends Controller
 {
@@ -14,7 +18,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        $projects = Project::all();
+        return view('admin.projects.index', compact("projects"));
     }
 
     /**
@@ -24,7 +29,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.projects.create');
     }
 
     /**
@@ -33,9 +38,25 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProjectRequest $request)
     {
-        //
+        /* usa le rules dello store project request per validare la creazione dell'elemento */
+
+        $data = $request->validated();
+
+        /* formattazione checkbox  (on : "") */
+        $data["completed"] = key_exists("completed", $data) ? true : false;
+
+        $project = Project::create($data);
+
+
+        return redirect()->route('admin.projects.show', $project->id);
+        
+   /*      ->with([
+            'status' => 'success',
+            'message' => 'hai creato un nuovo progetto: #' . $project->id
+        ]); */
+
     }
 
     /**
@@ -46,7 +67,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        return view("admin.projects.show", compact("project"));
     }
 
     /**
@@ -57,7 +78,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view("admin.projects.edit", compact("project"));
     }
 
     /**
@@ -67,9 +88,17 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        /* usa le rules dello store project request per validare la creazione dell'elemento */
+        $data = $request->validated();
+
+        $project->update($data);
+
+        return redirect()->route('admin.projects.show', $project->id); /* ->with([
+           'status'=>'success',
+           'message'=>'hai creato un nuovo progetto: #'. $project->id
+           ]) */
     }
 
     /**
@@ -80,6 +109,8 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+
+        $project->delete();
+        return redirect()->route("admin.projects.index");
     }
 }
