@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm  p-0">
-    <div class="container-fluid px-5 d-flex align-items-md-end ">
+    <div class="container-fluid px-md-5 d-flex align-items-md-end">
         <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
 
-            <div class="logo">
+            <div class="logo pt-2 {{-- all'espansione del burger deve allargarsi e avvicinarsi alle voci del menu --}}">
                 {{-- Keller-logo --}}
                 <svg class="keller-logo" width="112" height="111" viewBox="0 0 1426 1419" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -22,60 +22,64 @@
             {{-- config('app.name', 'Laravel') --}}
         </a>
 
-        <div class="flex-fill ps-3 pe-lg-5 text-end">
+        <div class="flex-fill ps-3 pe-2 pe-lg-3 text-end">
 
             {{-- hamburger-menu --}}
-            <button class="navbar-toggler " type="button" data-bs-toggle="collapse"
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
 
+            {{-- funzione per recuperare il nome della rotta ----------------!!!!!!}}
+            {{--   @dump(Route::getCurrentRoute()) --}}
 
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                 <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav me-auto">
-
-                    <li class="nav-item d-flex flex-column align-items-center">
-                        <a class="nav-link fs-5 py-4" href="{{ url('/') }}">
+                <ul class="navbar-nav  me-md-auto align-items-end">
+                    <li class="nav-item  d-flex flex-column align-items-center">
+                        <a class="nav-link fs-5  py-md-4 px-2     
+                        {{ Route::currentRouteName() === null ? 'active' : '' }}"
+                            href="{{ url('/') }}">{{-- WTF?! ______??? --}}
                             {{ __('Home') }}</a>
                         <div class="link-underline m-3 mb-0"></div>
                     </li>
-                    <li class="nav-item d-flex flex-column align-items-center">
-                        <a class="nav-link fs-5 py-4" href="{{ url('/') }}">
+                    <li class="nav-item  d-flex flex-column align-items-center">
+                        <a class="nav-link fs-5  py-md-4 px-2" href="{{ url('/') }}">
+                            {{ __('Progetti') }}</a>
+                        <div class="link-underline m-3 mb-0"></div>
+                    </li>
+                    <li class="nav-item  d-flex flex-column align-items-center">
+                        <a class="nav-link fs-5  py-md-4 px-2" href="{{ url('/') }}">
                             {{ __('link') }}</a>
                         <div class="link-underline m-3 mb-0"></div>
                     </li>
-                    <li class="nav-item d-flex flex-column align-items-center">
-                        <a class="nav-link fs-5 py-4" href="{{ url('/') }}">
-                            {{ __('link') }}</a>
-                        <div class="link-underline m-3 mb-0"></div>
-                    </li>
-                  
                 </ul>
-
-
-
-
-                </ul>
-
                 <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto align-items-end">
                     <!-- Authentication Links -->
                     @guest
-                        <li class="nav-item ">
-                            <a class="nav-link fs-5" href="{{ route('login') }}">{{ __('Login') }}</a>
+
+                        <li class="nav-item  d-flex flex-column align-items-center">
+                            <a class="nav-link fs-5  py-md-4 px-2
+                            {{ Route::currentRouteName() === 'login' ? 'active' : '' }}"
+                                href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <div class="link-underline m-3 mb-0"></div>
                         </li>
+
                         @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link fs-5" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <li class="nav-item   d-flex flex-column align-items-center">
+                                <a class="nav-link fs-5 py-md-4 px-2
+                                {{ Route::currentRouteName() === 'register' ? 'active' : '' }}"
+                                    href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <div class="link-underline m-3 mb-0"></div>
                             </li>
                         @endif
                     @else
-                        <li class="nav-item dropdown">
+                        <li class="nav-item  dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle fs-5" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
