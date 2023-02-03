@@ -1,14 +1,22 @@
 @use "@fortawesome/fontawesome-free/css/all.min.css";
 
 //VARIABLES (bootstrap)
-$primary_color: #7e7e7e;
-$secondary_color: #ffffff8c;
+$primary_color: #aa815a;
+$primary_color_light:lighten(saturate($primary_color, 30%),15%);
+$primary_color_dark:darken($primary_color,15%);
+
+$secondary_color: #f0cd9afb;
+$secondary_color_light:lighten(saturate($secondary_color, 30%),15%);
+$secondary_color_dark:darken($secondary_color,15%);
+
 $success_color: rgb(154, 228, 120);
 $info_color: rgb(16, 196, 241);
 $warning_color: rgb(255, 193, 7);
 $danger_color: rgb(231, 84, 84);
 $light_color: rgb(248, 249, 250);
+
 $dark_color: rgb(49, 49, 49);
+$dark_color_dark:darken($dark_color,5%);
 
 @use "bootstrap/scss/bootstrap" with ($primary: $primary_color,
  $secondary: $secondary_color,
@@ -48,7 +56,7 @@ body {
 
 /***** NAVBAR ******/
 nav {
- background: linear-gradient(0deg, rgb(49, 49, 49) 10%, rgba(37, 37, 37, 1) 100%);
+ background: linear-gradient(0deg, $dark_color 10%, $dark_color_dark 100%);
  font-family: 'Cinzel', serif;
 
  /*  & * {
@@ -57,6 +65,9 @@ nav {
 
  .keller-logo {
   transform: scale(120%);
+  ellipse{
+   fill:$primary_color;
+  }
  }
 
  .nav-item {
@@ -162,6 +173,7 @@ footer {
 
  &:hover .wave,
  &:hover .footer-content {
-  background: rgb(199, 180, 180);
+
+  background:$dark_color_dark;
  }
 }
