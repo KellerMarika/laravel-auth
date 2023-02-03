@@ -14,9 +14,10 @@ class UpdateProjectRequest extends FormRequest
      */
     public function authorize()
     {
-       /*  if(Auth::user()->is_admin == true){ */
+        if (Auth::user()->is_admin == true) {
             return true;
-       /*  }; */
+        }
+        ;
     }
 
     /**
@@ -28,9 +29,9 @@ class UpdateProjectRequest extends FormRequest
     {
         return [
             /* validazione triste */
-            'title' => 'required|min:80|max:225',
-            'type' => 'requred|max:225',
-            'completed' => 'requred|boolean',
+            'title' => 'required|max:80',
+            'type' => 'required|max:225',
+            'completed' => 'required|boolean',
             'img' => 'string',
             'description' => 'string'
         ];

@@ -15,9 +15,10 @@ class StoreProjectRequest extends FormRequest
     public function authorize()
     {
 
-      /*   if(Auth::user()->is_admin == true){ */
+        if (Auth::user()->is_admin == true) {
             return true;
-       /*  }; */
+        }
+        ;
     }
 
     /**

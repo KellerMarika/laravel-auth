@@ -41,14 +41,21 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         /* usa le rules dello store project request per validare la creazione dell'elemento */
+
         $data = $request->validated();
 
-        $project = Project::create($data);
+        /* formattazione checkbox  (on : "") */
         $data["completed"] = key_exists("completed", $data) ? true : false;
-        return redirect()->route('admin.projects.show', $project->id)->with([
+
+        $project = Project::create($data);
+
+
+        return redirect()->route('admin.projects.show', $project->id);
+        
+   /*      ->with([
             'status' => 'success',
             'message' => 'hai creato un nuovo progetto: #' . $project->id
-        ]);
+        ]); */
 
     }
 

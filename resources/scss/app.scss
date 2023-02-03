@@ -89,6 +89,13 @@ nav {
  }
 }
 
+/* form *{
+ border:1px solid red;
+}
+ */
+
+
+
 
 /***** FOOTER ******/
 
@@ -112,7 +119,7 @@ footer {
 
    background: $primary_color;
    position: absolute;
-   width: 200%;
+   width: 500%;
    height: 100%;
    animation: wave 50s -2s linear infinite;
    transform: translate3d(0, 0, 0);
