@@ -130,7 +130,7 @@
                 <label class="form-label">IMMAGINE</label>
                 <input type="file" class="form-control
                     @error('img')is-invalid  @enderror"
-                    name="img">
+                    name="cover_img">
 
 
                 @error('img')

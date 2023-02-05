@@ -48,9 +48,9 @@ class ProjectController extends Controller
 
         if (key_exists("cover_img", $data)) {
 
-            $path = Storage::put("project", $data["cover_img"]);
+            $path = Storage::put("projects", $data["cover_img"]);
         }
-        /* formattazione checkbox  (on : "") */
+        /* formattazione checkbox  (on : "")  non serve più abbiamo messo checkbox supplementare*/
         /*        $data["completed"] = key_exists("completed", $data) ? true : false; ____*/
 
         $project = Project::create([
@@ -99,14 +99,29 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        /* usa le rules dello store project request per validare la creazione dell'elemento */
+
         $data = $request->validated();
+
+        if (key_exists("cover_img", $data)) {
+
+            $path = Storage::put("projects", $data["cover_img"]);
+
+            Storage::delete($project->cover_img);
+        }
+
+
+
+        $project->update([
+            ...$data,
+            'cover_img' => $path ?? $project->cover_img /* lo faccio a monitor di mettere un'immagine di default senno salverei sempre cover_img 404 nf nel db */
+        ]);
+
 
         $project->update($data);
 
         return redirect()->route('admin.projects.show', $project->id); /* ->with([
-           'status'=>'success',
-           'message'=>'hai creato un nuovo progetto: #'. $project->id
+        'status'=>'success',
+        'message'=>'hai creato un nuovo progetto: #'. $project->id
            ]) */
     }
 
@@ -118,7 +133,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-
+        Storage::delete($project->cover_img);
         $project->delete();
         return redirect()->route("admin.projects.index");
     }
