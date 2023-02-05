@@ -29,7 +29,8 @@
     {{-- QUESTA COSA è TROOOOOOOPPPO RIPTITIVA  --}}
 
     <div class="container w-75">
-        <form action="{{ route('admin.projects.update', $project->id) }}" method="POST" class="row">
+        <form class="row" action="{{ route('admin.projects.update', $project->id) }}" method="POST"
+            enctype="multipart/form-data">
             @method('PUT')
             @csrf
 
@@ -37,10 +38,9 @@
             {{-- title --}}
             <div class="input-container pb-2 col-12 col-md-6">
                 <label class="form-label">TITOLO</label>
-                <input type="text"
-                    class="form-control 
+                <input type="text" class="form-control 
                     @error('title') is-invalid  @enderror"
-                    name="title" value="{{ old('title', $project->title)  }}">
+                    name="title" value="{{ old('title', $project->title) }}">
 
                 @error('title')
                     <div class="invalid-feedback"> {{ $message }} </div>
@@ -49,20 +49,20 @@
                 @enderror
             </div>
 
-            {{-- type (dovrebbe poi diventare select) --}}
+            {{-- category (dovrebbe poi diventare select) --}}
             <div class="input-container pb-2 col-12 col-sm-8 col-md-4">
-                <label class="form-label">Tipo</label>
-                <input type="text"
-                    class="form-control 
-                    @error('type') is-invalid  @enderror"
-                    name="type" value="{{ old('type', $project->type)  }}">
-                   
-                @error('type')
+                <label class="form-label">Categoria</label>
+                <input type="text" class="form-control 
+        @error('category') is-invalid @enderror" name="category"
+                    value="{{ old('category', $project->category) }}">
+
+                @error('category')
                     <div class="invalid-feedback">{{ $message }}</div>
-                @elseif(old('type'))
+                @elseif(old('category'))
                     <div class="valid-feedback">ok </div>
                 @enderror
             </div>
+
 
             {{-- checkbox --}}
 
@@ -71,43 +71,80 @@
                     <label class="form-check-label" for="completed">completato</label>
 
                     <div class="form-check form-switch pt-2">
-                        <input class="form-check-input {{--  @error('type') is-invalid @elseif(old('type')) is-valid @enderror --}}" value="1" type="checkbox" role="switch"
-                            id="completed" name="completed" {{ old('completed', 1) ? 'checked' : '' }}>
-
+                        <input type="hidden" name="completed" value="0">
+                        <input class="form-check-input  @error('type') is-invalid @enderror " value="1" type="checkbox"
+                            role="switch" id="completed" name="completed"
+                            {{ old('completed', $project->completed) ? 'checked' : '' }}>
                     </div>
                 </div>
-                {{--   @error('type')
+                @error('type')
                     <div class="invalid-feedback"> {{ $message }} </div>
                 @elseif(old('type'))
                     <div class="valid-feedback"> ok </div>
-                @enderror --}}
+                @enderror
+            </div>
+
+            {{-- linguaggi --}}
+            <div class="input-container pb-2 col-12 col-md-8 ">
+                <label class="form-label">linguaggi</label>
+                <input type="text" class="form-control 
+            @error('languages') is-invalid  @enderror"
+                    name="languages" value="{{ old('languages', $project->languages) }}">
+
+                @error('languages')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @elseif(old('languages'))
+                    <div class="valid-feedback">ok </div>
+                @enderror
             </div>
 
 
 
-            {{-- img --}}
+            {{-- funziona ma non visualizza!! --}}
+            {{--      @dump (old('level',$project->level)) --}}
+
+            {{-- level --}}
+            <div class="input-container pb-2 col-12 col-md-4">
+                <label class="form-label" for="level">Difficoltà</label>
+                <select class="form-control selectpicker
+                        @error('level') is-invalid @enderror"
+                    id="level" name="level">
+                    <option value=""></option>
+                    <option value="easy" {{ old('level', $project->level) === 'easy' ? 'selecteded' : '' }}>easy</option>
+                    <option value="medium" {{ old('level', $project->level) === 'medium' ? 'selecteded' : '' }}>medium
+                    </option>
+                    <option value="hard" {{ old('level', $project->level) === 'hard' ? 'selecteded' : '' }}>hard</option>
+                    <option value="@die" {{ old('level', $project->level) === '@die' ? 'selecteded' : '' }}>@die</option>
+                </select>
+
+                @error('level')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @elseif(old('level'))
+                    <div class="valid-feedback">ok </div>
+                @enderror
+            </div>
+
+
+            {{-- cover_img --}}
             <div class="input-container pb-2">
                 <label class="form-label">IMMAGINE</label>
-                <input type="text"
-                    class="form-control
+                <input type="file" class="form-control
                     @error('img')is-invalid  @enderror"
-                    name="img" value="{{ old('img',$project->img)}}">
+                    name="img">
 
 
                 @error('img')
                     <div class="invalid-feedback">{{ $message }} </div>
-                @elseif(old('img'))
-                    <div class="valid-feedback"> ok </div>
                 @enderror
             </div>
 
             {{-- description --}}
             <div class="input-container pb-2">
                 <label class="form-label">Descrizione</label>
-                <textarea name="description" cols="30" rows="5"
+                <textarea name="description" rows="3"
                     class="form-control 
-                    @error('description') is-invalid @elseif(old('description')) is-valid @enderror">
-                   {{ old('description', $project->description)  }}</textarea>
+                    @error('description') is-invalid @enderror">
+                   {{ old('description', $project->description) }}</textarea>
 
                 @error('description')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -115,6 +152,7 @@
                     <div class="valid-feedback">ok</div>
                 @enderror
             </div>
+
 
             {{-- opzioni --}}
             <div class="p-3">
