@@ -57,8 +57,6 @@
             </div>
 
             {{-- checkbox --}}
-
-
             <div class="input-container pb-2 col-12  col-sm-4 col-md-2 ps-3">
                 <div class="form-check form-switch p-0">
 
@@ -67,8 +65,10 @@
                     <div class="form-check form-switch pt-2">
                         {{-- 2 imput per raccogliere true o false subito --}}
                         <input type="hidden" name="completed" value="0">
-                        <input class="form-check-input {{--  @error('type') is-invalid @elseif(old('type')) is-valid @enderror --}}" value="1" type="checkbox" role="switch"
-                            id="completed" name="completed" {{ old('completed', 1) ? 'checked' : '' }}>
+                        <input
+                            class="form-check-input @error('type') is-invalid @elseif(old('type')) is-valid @enderror "
+                            value="1" type="checkbox" role="switch" id="completed" name="completed"
+                            {{ old('completed', 1) ? 'checked' : '' }}>
 
                     </div>
                 </div>
@@ -94,17 +94,17 @@
                 @enderror
             </div>
 
-
-            <div class="input-container pb-2 col-12 col-sm-8 col-md-4">
+            {{-- level --}}
+            <div class="input-container pb-2 col-12 col-md-4">
                 <label class="form-label" for="level">Difficoltà</label>
                 <select
                     class="form-control
                     @error('level') is-invalid @elseif(old('level')) is-valid @enderror"
                     id="level" name="level">
-                        <option value="easy">easy</option>
-                        <option value="medium">medium</option>
-                        <option value="hard">hard</option>
-                        <option value="@die" selected>@die</option>
+                    <option value="easy">easy</option>
+                    <option value="medium">medium</option>
+                    <option value="hard">hard</option>
+                    <option value="@die" selected>@die</option>
                 </select>
                 @error('level')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -117,7 +117,7 @@
 
             {{-- cove
             {{-- level (dovrebbe poi diventare select) --}}
-          {{--   <div class="input-container pb-2 col-12 col-sm-8 col-md-4">
+            {{--   <div class="input-container pb-2 col-12 col-sm-8 col-md-4">
                 <label class="form-label" id="">Difficoltà</label>
                 <input type="text"
                     class="form-control 
@@ -144,8 +144,6 @@
 
                 @error('cover_img')
                     <div class="invalid-feedback">{{ $message }} </div>
-                    {{--  @elseif(old('cover_img'))
-                    <div class="valid-feedback"> ok </div> --}}
                 @enderror
             </div>
 
