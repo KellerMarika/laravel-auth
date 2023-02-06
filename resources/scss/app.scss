@@ -1,3 +1,5 @@
+/*****  BOOTSTRAP  *****************************************/
+
 @use "@fortawesome/fontawesome-free/css/all.min.css";
 
 /* abbinamenti colore */
@@ -11,7 +13,7 @@ $primary_color_light: lighten(saturate($primary_color, 20%), 10%);
 $primary_color_dark: darken($primary_color, 15%);
 
 $secondary_color: rgb(233, 216, 231);
-$secondary_color_light: lighten(saturate($secondary_color, 30%), 15%);
+$secondary_color_light: lighten(saturate($secondary_color, 30%), 10%);
 $secondary_color_dark: darken($secondary_color, 15%);
 
 
@@ -27,18 +29,22 @@ $danger_color: rgb(231, 84, 84);
 $light_color: rgb(248, 249, 250);
 
 $dark_color: rgb(49, 49, 49);
+
+$dark_color_light: lighten(rgb(49, 49, 49), 5%);
 $dark_color_dark: darken($dark_color, 5%);
 
 @use "bootstrap/scss/bootstrap" with ($primary: $primary_color,
- $secondary: $secondary_color,
- $success: $success_color,
- $info: $info_color,
- $warning: $warning_color,
- $danger: $danger_color,
- $light: $light_color,
- $dark: $dark_color,
+   $secondary: $secondary_color,
+   $success: $success_color,
+   $info: $info_color,
+   $warning: $warning_color,
+   $danger: $danger_color,
+   $light: $light_color,
+   $dark: $dark_color,
 );
 
+
+/*****  FONTS  *****************************************/
 // font-family: 'Solitreo', cursive;
 /* @import url('https://fonts.googleapis.com/css2?family=Solitreo&display=swap'); */
 
@@ -48,80 +54,207 @@ $dark_color_dark: darken($dark_color, 5%);
 //font-family: 'Cinzel', serif;
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap');
 
+
+/*******  MIXIN ********************************************/
+
+/***** MEDIA  QUERIES *****************************************/
+
+
+@mixin xxl {
+   @media screen and (min-width: 1400px) {
+      @content
+   }
+}
+
+;
+
+@mixin xl {
+   @media screen and (min-width: 1200px) {
+      @content
+   }
+}
+
+;
+
+@mixin lg {
+   @media screen and (min-width: 992px) {
+      @content
+   }
+}
+
+;
+
+@mixin md {
+   @media screen and (min-width: 768px) {
+      @content
+   }
+}
+
+;
+
+@mixin sm {
+   @media screen and (min-width: 576px) {
+      @content
+   }
+}
+
+;
+
+* {
+
+   border: 1px solid rgb(216, 127, 228);
+
+   @include sm {
+      border: 1px solid rgb(9, 0, 128);
+   }
+
+   @include md {
+      border: 1px solid rgb(0, 128, 128);
+   }
+
+
+   @include lg {
+      border: 1px solid rgb(125, 236, 91);
+   }
+
+   @include xl {
+      border: 1px solid rgb(255, 174, 0);
+   }
+
+   @include xxl {
+      border: 1px solid rgb(255, 0, 119);
+   }
+
+
+}
+
+
+/**********************************************/
+
 body {
- font-family: 'Raleway', sans-serif;
- color: $light_color;
+   font-family: 'Raleway', sans-serif;
+   color: $light_color;
 
- .jumbotron {
-  padding-top: 50px;
-  font-family: 'Cinzel', serif;
-  font-weight: 500;
+   ul {
+      margin: 0;
+      padding: 0;
+   }
 
-  .keller-name {
-   font-size: 4rem;
-   /*   font-weight: 400; */
-  }
- }
+
+
+   /**** JUMBOTRON ******************************************/
+
+   .jumbotron {
+      padding-top: 50px;
+      font-family: 'Cinzel', serif;
+      font-weight: 500;
+
+      .keller-name {
+         font-size: 4rem;
+         /*   font-weight: 400; */
+      }
+   }
 
 }
 
 /***** NAVBAR ******/
 nav {
- background: linear-gradient(0deg, $secondary_color 10%, $secondary_color_dark 100%);
- font-family: 'Cinzel', serif;
- font-weight: 500;
+   background: linear-gradient(0deg, $secondary_color 10%, $secondary_color_dark 100%);
+   font-family: 'Cinzel', serif;
+   font-weight: 500;
 
- /*  & * {
+   /*  & * {
   border: 1px solid rgb(0, 255, 34);
  }     */
 
- .keller-logo {
-  transform: scale(120%);
+   .keller-logo {
+      transform: scale(120%);
 
-  ellipse {
-   fill: $primary_color;
-  }
+      ellipse {
+         fill: $primary_color;
+      }
 
-  * {
+      * {
 
-   stroke: $primary_color_dark ;
-   stroke-width: 6;
-  }
- }
-
- .nav-item {
-  font-size: .75rem;
-  width: fit-content;
-
-  a {
-   text-decoration: none;
-   color: $primary_color;
-
-   &+.link-underline {
-    background-color: $primary_color;
-    height: 0px;
-    width: 0px;
-    transition: all .3s;
+         stroke: $primary_color_dark ;
+         stroke-width: 6;
+      }
    }
 
-   &:hover,
-   &:active,
-   &.active {
-    color: saturate($primary_color, 30%);
+   .nav-item {
+      font-size: .75rem;
+      width: fit-content;
 
-    &+.link-underline {
-     background-color: saturate($primary_color, 30%);
-     height: 1px;
-     width: calc(100% - 1rem);
-    }
+      a {
+         text-decoration: none;
+         color: $primary_color;
+
+         &+.link-underline {
+            background-color: $primary_color;
+            height: 0px;
+            width: 0px;
+            transition: all .3s;
+         }
+
+         &:hover,
+         &:active,
+         &.active {
+            color: saturate($primary_color, 30%);
+
+            &+.link-underline {
+               background-color: saturate($primary_color, 30%);
+               height: 1px;
+               width: calc(100% - 1rem);
+            }
+         }
+      }
    }
-  }
- }
 }
 
-/* .projects-container *{
- border:1px solid red;
-} */
+.dashboard-container {
+   height: 100vh;
+   width: 100vw;
+
+   background: linear-gradient(180deg, $primary_color, desaturate($primary_color_light, 15%), saturate($secondary_color_dark, 10%));
+
+   * {}
+
+   .dashboard-aside {
+      width: 50px;
+
+      .logo {
+
+         height: 60px;
+
+         .keller-logo {
+            height: 100%;
+            width: 100%;
+            transform: scale(120%);
+
+            ellipse {
+               fill: $dark_color_light;
+            }
+         }
+      }
+
+      @include md {
+         width: 200px;
+
+         .logo {
+            width: 60px;
+
+            .logo-title {
+               font-family: 'Cinzel', serif;
+            }
+         }
+      }
+   }
+
+   main {
+
+      background-color: transparentize($light_color,.6);
+   }
+}
 
 
 
@@ -131,68 +264,68 @@ nav {
 footer {
 
 
- /* waves */
- .ocean {
-  height: 100px;
-  width: 100%;
-  position: relative;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow-x: hidden;
+   /* waves */
+   .ocean {
+      height: 100px;
+      width: 100%;
+      position: relative;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      overflow-x: hidden;
 
-  .wave {
-   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 88.7'%3E%3Cpath d='M800 56.9c-155.5 0-204.9-50-405.5-49.9-200 0-250 49.9-394.5 49.9v31.8h800v-.2-31.6z' fill='%23003F7C'/%3E%3C/svg%3E");
+      .wave {
+         -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 88.7'%3E%3Cpath d='M800 56.9c-155.5 0-204.9-50-405.5-49.9-200 0-250 49.9-394.5 49.9v31.8h800v-.2-31.6z' fill='%23003F7C'/%3E%3C/svg%3E");
 
-   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 88.7'%3E%3Cpath d='M800 56.9c-155.5 0-204.9-50-405.5-49.9-200 0-250 49.9-394.5 49.9v31.8h800v-.2-31.6z' fill='%23003F7C'/%3E%3C/svg%3E");
+         mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 88.7'%3E%3Cpath d='M800 56.9c-155.5 0-204.9-50-405.5-49.9-200 0-250 49.9-394.5 49.9v31.8h800v-.2-31.6z' fill='%23003F7C'/%3E%3C/svg%3E");
 
-   background: $primary_color;
-   position: absolute;
-   width: 500%;
-   height: 100%;
-   animation: wave 50s -2s linear infinite;
-   transform: translate3d(0, 0, 0);
-   opacity: 0.8;
-   transition: all .8s;
+         background: $primary_color;
+         position: absolute;
+         width: 500%;
+         height: 100%;
+         animation: wave 50s -2s linear infinite;
+         transform: translate3d(0, 0, 0);
+         opacity: 0.8;
+         transition: all .8s;
 
-   &:nth-of-type(2) {
-    bottom: 0;
-    animation: wave 50s linear reverse infinite;
-    opacity: 0.6;
+         &:nth-of-type(2) {
+            bottom: 0;
+            animation: wave 50s linear reverse infinite;
+            opacity: 0.6;
+         }
+
+         &:nth-of-type(3) {
+            bottom: 0;
+            animation: wave 50s -3s linear infinite;
+            opacity: 0.5;
+         }
+
+         @keyframes wave {
+            0% {
+               transform: translateX(0);
+            }
+
+            50% {
+               transform: translateX(-25%);
+            }
+
+            100% {
+               transform: translateX(-50%);
+            }
+         }
+      }
    }
 
-   &:nth-of-type(3) {
-    bottom: 0;
-    animation: wave 50s -3s linear infinite;
-    opacity: 0.5;
+   .footer-content {
+      background: $primary_color;
+      opacity: .96;
+      min-height: 250px;
+      transition: all .8s;
    }
 
-   @keyframes wave {
-    0% {
-     transform: translateX(0);
-    }
+   &:hover .wave,
+   &:hover .footer-content {
 
-    50% {
-     transform: translateX(-25%);
-    }
-
-    100% {
-     transform: translateX(-50%);
-    }
+      background: $primary_color_light;
    }
-  }
- }
-
- .footer-content {
-  background: $primary_color;
-  opacity: .96;
-  min-height: 250px;
-  transition: all .8s;
- }
-
- &:hover .wave,
- &:hover .footer-content {
-
-  background: $primary_color_light;
- }
 }

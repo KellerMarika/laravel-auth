@@ -8,8 +8,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
+    {{--  <title>{{ config('app.name', 'Laravel') }}</title> --}}
+    <title>@yield('title')</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -22,7 +22,7 @@
 <body class=" bg-secondary{{-- {{ Auth::user() ? 'bg-success' : 'bg-danger' }} --}}">
     <div id="app" class="">
 
-        @include('profile.partials.navbar')        
+        @include('profile.partials.navbar')
         <main class="position-relative">
 
             @yield('content')
