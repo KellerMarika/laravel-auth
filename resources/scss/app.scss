@@ -29,8 +29,6 @@ $danger_color: rgb(231, 84, 84);
 $light_color: rgb(248, 249, 250);
 
 $dark_color: rgb(49, 49, 49);
-
-$dark_color_light: lighten(rgb(49, 49, 49), 5%);
 $dark_color_dark: darken($dark_color, 5%);
 
 @use "bootstrap/scss/bootstrap" with ($primary: $primary_color,
@@ -64,41 +62,31 @@ $dark_color_dark: darken($dark_color, 5%);
    @media screen and (min-width: 1400px) {
       @content
    }
-}
-
-;
+};
 
 @mixin xl {
    @media screen and (min-width: 1200px) {
       @content
    }
-}
-
-;
+};
 
 @mixin lg {
    @media screen and (min-width: 992px) {
       @content
    }
-}
-
-;
+};
 
 @mixin md {
    @media screen and (min-width: 768px) {
       @content
    }
-}
-
-;
+};
 
 @mixin sm {
    @media screen and (min-width: 576px) {
       @content
    }
-}
-
-;
+};
 
 * {
 
@@ -120,7 +108,6 @@ $dark_color_dark: darken($dark_color, 5%);
    @include xl {
       border: 1px solid rgb(255, 174, 0);
    }
-
    @include xxl {
       border: 1px solid rgb(255, 0, 119);
    }
@@ -135,10 +122,6 @@ body {
    font-family: 'Raleway', sans-serif;
    color: $light_color;
 
-   ul {
-      margin: 0;
-      padding: 0;
-   }
 
 
 
@@ -214,45 +197,17 @@ nav {
 .dashboard-container {
    height: 100vh;
    width: 100vw;
+background:linear-gradient(180deg, $primary_color, desaturate($primary_color_light, 15%), saturate($secondary_color_dark,10%));
 
-   background: linear-gradient(180deg, $primary_color, desaturate($primary_color_light, 15%), saturate($secondary_color_dark, 10%));
-
-   * {}
+   * {
+      padding: 5px;
+   }
 
    .dashboard-aside {
       width: 50px;
-
-      .logo {
-
-         height: 60px;
-
-         .keller-logo {
-            height: 100%;
-            width: 100%;
-            transform: scale(120%);
-
-            ellipse {
-               fill: $dark_color_light;
-            }
-         }
-      }
-
       @include md {
          width: 200px;
-
-         .logo {
-            width: 60px;
-
-            .logo-title {
-               font-family: 'Cinzel', serif;
-            }
-         }
       }
-   }
-
-   main {
-
-      background-color: transparentize($light_color,.6);
    }
 }
 

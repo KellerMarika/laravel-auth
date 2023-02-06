@@ -110,11 +110,11 @@
                         @error('level') is-invalid @enderror"
                     id="level" name="level">
                     <option value=""></option>
-                    <option value="easy" {{ old('level', $project->level) === 'easy' ? 'selecteded' : '' }}>easy</option>
-                    <option value="medium" {{ old('level', $project->level) === 'medium' ? 'selecteded' : '' }}>medium
+                    <option value="easy" {{ old('level', $project->level) === 'easy' ? 'selected' : '' }}>easy</option>
+                    <option value="medium" {{ old('level', $project->level) === 'medium' ? 'selected' : '' }}>medium
                     </option>
-                    <option value="hard" {{ old('level', $project->level) === 'hard' ? 'selecteded' : '' }}>hard</option>
-                    <option value="@die" {{ old('level', $project->level) === '@die' ? 'selecteded' : '' }}>@die</option>
+                    <option value="hard" {{ old('level', $project->level) === 'hard' ? 'selected' : '' }}>hard</option>
+                    <option value="@die" {{ old('level', $project->level) === '@die' ? 'selected' : '' }}>@die</option>
                 </select>
 
                 @error('level')
