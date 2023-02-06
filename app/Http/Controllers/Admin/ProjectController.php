@@ -117,8 +117,6 @@ class ProjectController extends Controller
         ]);
 
 
-        $project->update($data);
-
         return redirect()->route('admin.projects.show', $project->id); /* ->with([
         'status'=>'success',
         'message'=>'hai creato un nuovo progetto: #'. $project->id
